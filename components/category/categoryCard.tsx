@@ -1,6 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
+
 import { Link } from 'expo-router'
 import { Category } from '@/types/quiz'
 

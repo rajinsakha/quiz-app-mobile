@@ -2,6 +2,7 @@ import { Category } from "@/types/quiz";
 import icons from "./icons";
 import images from "./images";
 
+
 export const categories:Category[] = [
   {
     id: 1,

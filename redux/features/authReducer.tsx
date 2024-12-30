@@ -2,24 +2,22 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IProfileDetails {
   id: number;
-  user_id:number;
+  user_id: number;
   profile_picture: string;
   location: string;
   user_type: string;
   agent_level: string;
   total_loyalty_bonus_earned: number;
-  total_loyalty_bonus_withdrawn:number;
-  remaining_loyalty:number;
-  display_name: string |null;
+  total_loyalty_bonus_withdrawn: number;
+  remaining_loyalty: number;
+  display_name: string | null;
   email: string;
   phone_number: string;
   refer_code: string;
 }
 
 type HomeState = {
-  accessToken: string;
-  refreshToken:string;
-  selectedUser: any;
+  username: string;
   isPopoverClicked: boolean;
   email: string;
   profileDetails: IProfileDetails;
@@ -27,28 +25,21 @@ type HomeState = {
 };
 
 const initialState = {
-  accessToken: "Hello",
-  refreshToken:"",
-  selectedUser: {} as any,
+  username: "",
   isPopoverClicked: false,
   email: "",
   profileDetails: {} as IProfileDetails,
-  refetch: false
+  refetch: false,
 } as HomeState;
 
 export const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAccessToken: (state, action) => {
-      state.accessToken = action.payload;
+    setUserName: (state, action) => {
+      state.username = action.payload;
     },
-    setRefreshToken: (state, action) => {
-      state.refreshToken = action.payload;
-    },
-    editUser: (state, action: PayloadAction<any>) => {
-      state.selectedUser = action.payload;
-    },
+
     setIsPopoverClicked: (state, action: PayloadAction<boolean>) => {
       state.isPopoverClicked = action.payload;
     },
@@ -64,6 +55,11 @@ export const auth = createSlice({
   },
 });
 
-export const { setAccessToken, setRefreshToken, editUser, setIsPopoverClicked, setEmail , setProfileDetails, toggleRefetch} =
-  auth.actions;
+export const {
+  setUserName,
+  setIsPopoverClicked,
+  setEmail,
+  setProfileDetails,
+  toggleRefetch,
+} = auth.actions;
 export default auth.reducer;

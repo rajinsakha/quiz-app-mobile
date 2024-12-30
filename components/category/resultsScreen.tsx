@@ -2,31 +2,27 @@ import { View, Text, TouchableOpacity, Image, Pressable } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
+import { useAppSelector } from "@/redux/hooks";
 
 interface ResultsScreenProps {
   score: number;
   totalQuestions: number;
-  userName?: string;
-  rank?: number;
   userImage?: string;
 }
 
 const ResultsScreen = ({
   score,
   totalQuestions,
-  userName = "Roxane",
-  rank = 432,
   userImage = "/placeholder.svg?height=100&width=100",
-}: ResultsScreenProps) => (
-  <SafeAreaView className="h-screen w-full bg-slate-100">
+}: ResultsScreenProps) =>{
+
+  const {username} = useAppSelector((state) => state.authReducer);
+
+return  <SafeAreaView className="h-screen w-full bg-slate-100">
     {/* Gradient Background */}
     <View className="h-full w-full bg-gradient-to-b from-blue-400 to-blue-500 px-6">
       {/* Score Display */}
-      <View className="absolute top-10 left-6">
-        <Text className="text-black text-base font-medium">
-          Correct Answer {score}/{totalQuestions}
-        </Text>
-      </View>
+      
 
       {/* Main Content Card */}
       <View className="h-full items-center justify-center">
@@ -42,14 +38,16 @@ const ResultsScreen = ({
               </View>
               <View className="bg-primary-300 rounded-xl py-1 px-4 mt-2">
                 <Text className="text-white text-center font-semibold">
-                  {userName}
+                  {username}
                 </Text>
-                <Text className="text-white/80 text-center text-sm">
-                  Rank {rank}
-                </Text>
+          
               </View>
             </View>
           </View>
+
+          <Text className="text-black text-xl  font-medium">
+          Correct Answer: {score}/{totalQuestions}
+        </Text>
 
           {/* Congratulations Text */}
           <Text className="text-2xl font-bold text-gray-800 text-center mb-2">
@@ -74,6 +72,7 @@ const ResultsScreen = ({
       </View>
     </View>
   </SafeAreaView>
-);
+
+} ;
 
 export default ResultsScreen;

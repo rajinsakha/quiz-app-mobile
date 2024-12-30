@@ -6,7 +6,7 @@ import CategoryCard from "@/components/category/categoryCard";
 import { categories } from "@/constants/data";
 
 const Index = () => {
-  const { accessToken } = useAppSelector((state) => state.authReducer);
+
 
   return (
     <View className="p-4">

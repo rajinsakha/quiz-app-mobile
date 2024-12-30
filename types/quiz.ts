@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { ImageSourcePropType } from "react-native";
 
 export interface Option {
@@ -15,7 +16,7 @@ export interface Question {
   export interface Category {
     id: number;
     name: string;
-    image: ImageSourcePropType; // Path to the image associated with the category
+    image: ImageSourcePropType; 
     totalQuestions: number;
     questions: Question[];
   }
