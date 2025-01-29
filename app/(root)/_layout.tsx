@@ -16,7 +16,7 @@ export default function AppLayout() {
   //     </SafeAreaView>
   //   );
 
-  if (username === undefined) return <Redirect href="/sign-in" />;
+  if (username === "") return <Redirect href="/sign-in" />;
 
   return <Slot />;
 }

@@ -39,7 +39,6 @@ export const auth = createSlice({
     setUserName: (state, action) => {
       state.username = action.payload;
     },
-
     setIsPopoverClicked: (state, action: PayloadAction<boolean>) => {
       state.isPopoverClicked = action.payload;
     },
